@@ -1,7 +1,6 @@
   const img = document.getElementById("img");
   var watts= Number(localStorage.getItem("watts"))|0;
-  var co2= Number(localStorage.getItem("co2"))|0;
-  var counter= Number(localStorage.getItem("counter"))|1;
+  var co2= localStorage.getItem("co2")!==null ? localStorage.getItem("co2"):0;
   let batteryInfo = {
     level: '',
     levelText: '',
@@ -20,16 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
     batteryInfo.level = percentage;
     if(percentage<localStorage.getItem("battery"))
     {
+      console.log("hi");
       var num = localStorage.getItem("battery")-percentage;
       localStorage.setItem("watts",watts+num);
-      localStorage.setItem("counter",counter+num);
-    }
-    if(localStorage.getItem("counter")>1000)
-    {
-      localStorage.setItem("co2",co2+1);
-      localStorage.setItem("counter",0);
+      var temp = JSON.parse(localStorage.getItem("co2"));
+      temp = Math.round((temp+0.385) * 1000) / 1000;
+      temp= JSON.stringify(temp);
+      co2=temp;
+      localStorage.setItem("co2",temp);
     }
     localStorage.setItem("battery",percentage);
+    console.log(localStorage.getItem("co2"));
 
 
     if (battery.charging) {
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("batteryLife").innerText=batteryInfo.level+"% "+batteryInfo.levelText;
     document.getElementById("batteryTime").innerText=batteryInfo.time+" "+batteryInfo.timeText;
     document.getElementById("watts").innerText=watts+" watts "+batteryInfo.wattsText;
-    document.getElementById("co2").innerText=co2+"lbs "+batteryInfo.co2Text;
+    document.getElementById("co2").innerText=co2+"g "+batteryInfo.co2Text;
   });
   document.getElementById("reset").addEventListener("click", reset);
   function reset()
@@ -70,6 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.setItem("watts",0);
     localStorage.setItem("co2",0);
     document.getElementById("watts").innerText=0+" watts "+batteryInfo.wattsText;
-    document.getElementById("co2").innerText=0+"lbs "+batteryInfo.co2Text;
+    document.getElementById("co2").innerText=0+"g "+batteryInfo.co2Text;
   }
 });
