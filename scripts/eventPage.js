@@ -5,14 +5,6 @@ function updateBatteryLevel(level, isCharging) {
   chrome.browserAction.setIcon({
     path: `./images/icon-${ chargingStatus }.png`
   });
-
-  chrome.browserAction.setBadgeText({
-    text: batteryLevelText
-  });
-
-  chrome.browserAction.setBadgeBackgroundColor({
-    color: [94, 97, 106, 255]
-  });
 }
 
 function getBatteryStatus() {
@@ -21,9 +13,4 @@ function getBatteryStatus() {
   });
 }
 
-chrome.alarms.create('batteryLevel', {
-  when: Date.now() + 1000,
-  periodInMinutes: 2
-});
 chrome.runtime.onInstalled.addListener(getBatteryStatus);
-chrome.alarms.onAlarm.addListener(getBatteryStatus);

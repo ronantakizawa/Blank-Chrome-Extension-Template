@@ -1,24 +1,4 @@
-# Battery Info
+Reference: https://github.com/radibit/battery-info-chrome-extension
 
-<h1 align="center">
-	<img width="150" src="https://rawgit.com/radibit/battery-info-chrome-extension/master/images/logo.svg" alt="Battery Info">
-	<br>
-	<br>
-</h1>
 
-> Check easily your laptop battery status.
-
-## Description
-
-The extension is using the [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API).
-
-Features:
-- Shows current battery charge level as a badge on the icon (updates on every two minutes)
-- Provides information about the remaining time / time until full charge (on icon click)
-- Indicates with an icon whether or not the laptop is connected to a power adapter
-
-<img width="150" src="images/screenshot-1.png" alt="Battery Info Screenshot 1">
-
-<img width="150" src="images/screenshot-2.png" alt="Battery Info Screenshot 2">
-
-It's available on the [Chrome Web Store](https://chrome.google.com/webstore/detail/battery-info/jchnojkeefjdioodimacimfiefjdbpag).
+This chrome extension calculates the watts used from your laptop by tracking the battery percentage. Using the watts, a user's carbon footprint can be calculated. The average laptop has around 110 watts that can be used (https://www.mtech.news/article/MacBook-Pro-2021-M1-Max-Power-Consumption-Low-And-High-Power-Mode-175284), and each watt contributes to approximately 0.000811lb of CO2 emitted. 

@@ -2,53 +2,47 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Battery Indicator's Popup</title>
+    <title>Envirobattery</title>
     <style>
-      html, body {
-        padding: 0;
-        margin: 0;
-      }
       body {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 100%;
-        background-color: #FAFAFA;
+        font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        background-color: #ffffff;
         color: #0C1A25;
+        margin-left: 80px;
+        margin-right: 80px;
+        text-align:center;
+
       }
       .main {
-        padding: .5em;
-        width: 150px;
+        padding: .9em;
         display: flex;
         flex-direction: column;
         align-items: center;
+        place-items:"center";
       }
       #status {
-        font-size: .9em;
-        margin-top: .5em;
-      }
-      #status > p {
-        margin-top: 0;
-        margin-bottom: .5em;
-      }
-      #i-notCharging,
-      #i-charging {
-        display: none;
-        margin: 0 auto;
-        width: 30px;
-        height: 30px;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        place-items:"center";
+        overflow: hidden;
+        text-align:center;
       }
     </style>
   </head>
   <body>
     <div class="main">
-      <svg id="i-notCharging" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CF4942" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
-        <path d="M23 13v-2"/>
-      </svg>
-      <svg id="i-charging" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3.19M15 6h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-3.19" fill="none" stroke="#68D675" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
-        <path fill="none" stroke="#68D675" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M23 13v-2M11 6l-4 6h6l-4 6"/>
-      </svg>
-      <div id="status"></div>
+      <text style="font-weight:bold;font-size:30px;">Envirobattery</text>
+      <br>
+       <img id="img" src="">
+      <div id="status">
+        <p id="batteryLife"></p>
+        <p id="batteryTime"></p>
+        <p id="watts"></p>
+        <p id="co2"></p>
+      </div>
+      <button type="button" id="reset" style=font-size:15px;>Reset</button>
     </div>
     <script src="scripts/popup.js"></script>
   </body>
