@@ -2,7 +2,7 @@
  	"manifest_version": 3,
  	"name": "Envirobattery",
  	"version": "2.0",
-	"description": "This chrome extension calculates the watts used from your laptop by tracking the battery percentage.",
+	"description": "This chrome extension calculates your carbon footprint by tracking your battery usage.",
   "background.service_worker": {
     "scripts": ["scripts/eventPage.js"]
   },
