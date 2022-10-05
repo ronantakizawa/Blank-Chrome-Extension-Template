@@ -1,7 +1,7 @@
 {
  	"manifest_version": 3,
  	"name": "Envirobattery",
- 	"version": "2.0",
+ 	"version": "3.0",
 	"description": "This chrome extension calculates your carbon footprint by tracking your battery usage.",
   "background.service_worker": {
     "scripts": ["scripts/eventPage.js"]

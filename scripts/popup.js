@@ -1,6 +1,4 @@
-  const img = document.getElementById("img");
-  var watts= Number(localStorage.getItem("watts"))|0;
-  var co2= localStorage.getItem("co2")!==null ? localStorage.getItem("co2"):0;
+const img = document.getElementById("img");
   let batteryInfo = {
     level: '',
     levelText: '',
@@ -17,9 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let date = new Date(null);
     var percentage = (battery.level * 100).toFixed();
     batteryInfo.level = percentage;
+    var watts= Number(localStorage.getItem("watts")!==null ?localStorage.getItem("watts"):100-percentage);
+    var co2= localStorage.getItem("co2")!==null ? localStorage.getItem("co2"):0.385*(100-percentage);
+    localStorage.setItem("watts",watts);
+    localStorage.setItem("co2",co2);
     if(percentage<localStorage.getItem("battery"))
     {
-      console.log("hi");
       var num = localStorage.getItem("battery")-percentage;
       localStorage.setItem("watts",watts+num);
       var temp = JSON.parse(localStorage.getItem("co2"));
@@ -29,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
       localStorage.setItem("co2",temp);
     }
     localStorage.setItem("battery",percentage);
-    console.log(localStorage.getItem("co2"));
 
 
     if (battery.charging) {
@@ -64,12 +64,9 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("watts").innerText=watts+" watts "+batteryInfo.wattsText;
     document.getElementById("co2").innerText=co2+"g "+batteryInfo.co2Text;
   });
-  document.getElementById("reset").addEventListener("click", reset);
-  function reset()
+  document.getElementById("donate").addEventListener("click", donate);
+  function donate()
   {
-    localStorage.setItem("watts",0);
-    localStorage.setItem("co2",0);
-    document.getElementById("watts").innerText=0+" watts "+batteryInfo.wattsText;
-    document.getElementById("co2").innerText=0+"g "+batteryInfo.co2Text;
+    window.open("https://paypal.me/ronantakizawa?country.x=US&locale.x=en_US","_blank");
   }
 });
