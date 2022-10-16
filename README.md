@@ -3,5 +3,5 @@ This is a blank template for building chrome extensions. For beginners, ignore a
 How to deploy your chrome extension:
 1. Type "chrome://extensions/" into your search tab. It should show all of your chrome extensions. 
 2. Turn on developer mode. 
-3. Click load unpacked and select this file. 
+3. Click "load unpacked" and select this file. 
 4. Your chrome extension should be live!
